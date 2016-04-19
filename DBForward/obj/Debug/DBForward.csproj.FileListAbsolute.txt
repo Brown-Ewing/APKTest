@@ -1,0 +1,6 @@
+D:\Projects\APKTest\DBForward\bin\DBForward.dll.config
+D:\Projects\APKTest\DBForward\bin\DBForward.dll
+D:\Projects\APKTest\DBForward\bin\DBForward.pdb
+D:\Projects\APKTest\DBForward\obj\Debug\DBForward.csprojResolveAssemblyReference.cache
+D:\Projects\APKTest\DBForward\obj\Debug\DBForward.dll
+D:\Projects\APKTest\DBForward\obj\Debug\DBForward.pdb
