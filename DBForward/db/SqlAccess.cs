@@ -78,7 +78,7 @@ namespace DBForward {
         /// <param name="sql">要执行的sql语句</param>  
         /// <param name="commandType">要执行的查询语句类型，如存储过程或者sql文本命令</param>  
         /// <param name="parameters">Transact-SQL语句或者存储过程的参数数组</param>  
-        /// <returns></returns>  
+        /// <returns>更改了几行数据</returns>  
         public int ExecuteNonQuery(string sql, CommandType commandType, SqlParameter[] parameters) {
             int count = 0;
             SqlConnection con = new SqlConnection(connStr);
@@ -96,12 +96,12 @@ namespace DBForward {
             return count;
         }
 
-        public void sortByRowNumber(string sql) {
-            sortByRowNumber(sql, CommandType.Text, null);
+        public DataTable sortByRowNumber(string sql) {
+            return sortByRowNumber(sql, CommandType.Text, null);
         }
 
-        public void sortByRowNumber(string sql, CommandType commandtype) {
-            sortByRowNumber(sql, commandtype, null);
+        public DataTable sortByRowNumber(string sql, CommandType commandtype) {
+            return sortByRowNumber(sql, commandtype, null);
         }
 
         /// <summary>
@@ -110,18 +110,24 @@ namespace DBForward {
         /// <param name="sql"></param>
         /// <param name="commandType"></param>
         /// <param name="parameters"></param>
-        public void sortByRowNumber(string sql, CommandType commandtype, SqlParameter[] parameters) {
+        public DataTable sortByRowNumber(string sql, CommandType commandtype, SqlParameter[] parameters) {
+            DataTable data = new DataTable(); //实例化datatable，用于装载查询结果集  
             using(SqlConnection con = new SqlConnection(connStr)) {
                 using(SqlCommand cmd = new SqlCommand(sql, con)) {
-                    cmd.CommandType = commandtype;
+                    cmd.CommandType = commandtype;//设置command的commandType为指定的Commandtype  
+                    //如果同时传入了参数，则添加这些参数  
                     if(parameters != null) {
                         foreach(SqlParameter parameter in parameters) {
                             cmd.Parameters.Add(parameter);
                         }
                     }
-                    cmd.ExecuteNonQuery();
+
+                    //通过包含查询sql的sqlcommand实例来实例化sqldataadapter  
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(data);//填充datatable  
                 }
             }
+            return data;
         }
 
         /// <summary>  

@@ -4,19 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace DBForward {
     public partial class register : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-            string sqlStr1 = "INSERT INTO Account (Id, name, password, level) VALUES (1, 'carpton', '123456', 0)";
-            string sqlStr2 = "INSERT INTO Account (Id, name, password, level) VALUES (2, 'user1', '654321', 2)";
-            string sqlStr3 = "INSERT INTO Billboard (Id, name, mission) VALUES (1, 'carpton', 12)";
-            string sqlStr4 = "INSERT INTO Billboard (Id, name, mission) VALUES (2, 'user1', 3)";
+            string userName = Request.Params["name"];
+            string userPassword = Request.Params["password"];
+            string sqlStr1 = "select * from Account where name='" + userName + "' and password='" + userPassword + "'";
+
             SqlAccess sa = new SqlAccess();
-            sa.ExecuteNonQuery(sqlStr1);
-            sa.ExecuteNonQuery(sqlStr2);
-            sa.ExecuteNonQuery(sqlStr3);
-            sa.ExecuteNonQuery(sqlStr4);
+            DataTable dt = sa.ExecuteDataTable(sqlStr1);
+            if(dt.Rows.Count > 0) {
+                Response.Write("Has used!");
+                return;
+            }
+
+            string sqlStr2 = "INSERT INTO Account (name, password) VALUES ('" + userName + "', '" + userPassword + "')";
+            //string sqlStr3 = "INSERT INTO Billboard (name) VALUES ('" + userName + "')";
+            int count2 = sa.ExecuteNonQuery(sqlStr2);
+            //int count3 = sa.ExecuteNonQuery(sqlStr3);
+            if(count2 == 1) {
+                Response.Write("Success!");
+            } else {
+                Response.Write("Error!");
+                return;
+            }
+
+            Session["UserName"] = userName;
         }
     }
 }
