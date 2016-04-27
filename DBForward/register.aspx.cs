@@ -16,7 +16,7 @@ namespace DBForward {
             SqlAccess sa = new SqlAccess();
             DataTable dt = sa.ExecuteDataTable(sqlStr1);
             if(dt.Rows.Count > 0) {
-                Response.Write("Has used!");
+                Response.Write("<span>Has used</span>");
                 return;
             }
 
@@ -25,9 +25,9 @@ namespace DBForward {
             int count2 = sa.ExecuteNonQuery(sqlStr2);
             //int count3 = sa.ExecuteNonQuery(sqlStr3);
             if(count2 == 1) {
-                Response.Write("Success!");
+                Response.Write("<span>Success</span>");
             } else {
-                Response.Write("Error!");
+                Response.Write("<span>Error</span>");
                 return;
             }
 

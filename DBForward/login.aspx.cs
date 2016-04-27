@@ -16,9 +16,9 @@ namespace DBForward {
             SqlAccess sa = new SqlAccess();
             DataTable dt = sa.ExecuteDataTable(sqlStr1);
             if(dt.Rows.Count > 0) {
-                Response.Write("Success!");
+                Response.Write("<span>Success</span>");
             } else {
-                Response.Write("No such a user!");
+                Response.Write("<span>No such a user</span>");
                 return;
             }
 
