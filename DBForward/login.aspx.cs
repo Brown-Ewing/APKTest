@@ -29,7 +29,7 @@ namespace DBForward {
                 return;
             }
 
-            Session["UserName"] = userName;
+            //Session["UserName"] = userName;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace DBForward {
             string userName = Request.Params["name"];
             string mission = Request.Params["mission"];
             if(string.IsNullOrEmpty(mission)) {
-                this.getBillboard();
+                this.getBillboard(userName);
             } else {
                 this.passAMission(userName, mission);
             }
@@ -24,7 +24,7 @@ namespace DBForward {
             sa.ExecuteNonQuery(sqlStr);
         }
 
-        void getBillboard() {
+        void getBillboard(string userName) {
             //返回包含自己在内的总共11个数据(自己+前10名)
             //List<string> results = new List<string>();
             String results = "";
@@ -36,7 +36,7 @@ namespace DBForward {
 
             int len = drc.Count;
             bool findUserRank = false;
-            string userName = (string)Session["UserName"];
+            //string userName = (string)Session["UserName"];
             //string test1 = "", test2 = "";
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
@@ -48,9 +48,9 @@ namespace DBForward {
 
                 if(!findUserRank) {
                     string name = (string)drc[i]["name"];
-                    Response.Write(" AAA " + name + " BBB " + userName);
+                    //Response.Write(" AAA " + name + " BBB " + userName);
                     if(name.Equals(userName)) {
-                        Response.Write("CCC");
+                        //Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
                         results = userName + "," + (string)drc[i]["rank"] + "," + results;
