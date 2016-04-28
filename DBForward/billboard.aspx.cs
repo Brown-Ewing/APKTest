@@ -37,11 +37,11 @@ namespace DBForward {
             int len = drc.Count;
             bool findUserRank = false;
             string userName = (string)Session["UserName"];
-            string test1 = "", test2 = "";
+            //string test1 = "", test2 = "";
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
                     results = results + (string)drc[i]["name"] + "," + (i + 1) + ",";
-                    test1 = results;
+                    //test1 = results;
                 } else if(findUserRank) {
                     break;
                 }
@@ -52,12 +52,12 @@ namespace DBForward {
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
                         results = userName + "," + (string)drc[i]["rank"] + "," + results;
-                        test2 = results + "AAA";
+                        //test2 = results + "AAA";
                         findUserRank = true;
                     }
                 }
             }
-            Response.Write("<span>" + results + test1 + test2 + "</span>");
+            Response.Write("<span>" + results + "</span>");
         }
     }
 }
