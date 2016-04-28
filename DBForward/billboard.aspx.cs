@@ -37,7 +37,7 @@ namespace DBForward {
             int len = drc.Count;
             bool findUserRank = false;
             string userName = (string)Session["UserName"];
-            string test1, test2;
+            string test1 = "", test2 = "";
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
                     results = results + (string)drc[i]["name"] + "," + (i + 1) + ",";
