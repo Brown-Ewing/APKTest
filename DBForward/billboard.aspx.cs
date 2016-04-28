@@ -48,13 +48,13 @@ namespace DBForward {
 
                 if(!findUserRank) {
                     string name = (string)drc[i]["name"];
-                    Response.Write("AAA");
+                    Response.Write(" AAA " + name + " BBB " + userName);
                     if(name.Equals(userName)) {
-                        Response.Write("BBB");
+                        Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
                         results = userName + "," + (string)drc[i]["rank"] + "," + results;
-                        //test2 = results + "AAA";
+                        //test2 = results + "DDD";
                         findUserRank = true;
                     }
                 }
