@@ -48,7 +48,9 @@ namespace DBForward {
 
                 if(!findUserRank) {
                     string name = (string)drc[i]["name"];
-                    if(name == userName) {
+                    Response.Write("AAA");
+                    if(name.Equals(userName)) {
+                        Response.Write("BBB");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
                         results = userName + "," + (string)drc[i]["rank"] + "," + results;
