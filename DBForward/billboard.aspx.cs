@@ -54,7 +54,7 @@ namespace DBForward {
                     }
                 }
             }
-            Response.Write("<span>" + results + "</span>");
+            Response.Write("<span>" + results + len + "</span>");
         }
     }
 }
