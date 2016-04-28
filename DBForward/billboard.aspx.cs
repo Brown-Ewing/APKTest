@@ -9,8 +9,25 @@ using System.Data;
 namespace DBForward {
     public partial class billboard : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
+            string userName = Request.Params["name"];
+            string mission = Request.Params["mission"];
+            if(string.IsNullOrEmpty(mission)) {
+                this.getBillboard();
+            } else {
+                this.passAMission(userName, mission);
+            }
+        }
+
+        void passAMission(string userName, string mission) {
+            string sqlStr = "UPDATE Billboard SET mission = " + mission + " WHERE name=N'" + userName + "'";
+            SqlAccess sa = new SqlAccess();
+            sa.ExecuteNonQuery(sqlStr);
+        }
+
+        void getBillboard() {
             //返回包含自己在内的总共11个数据(自己+前10名)
-            List<string> results = new List<string>();
+            //List<string> results = new List<string>();
+            String results = "";
             string sqlStr1 = "select row_number() over(order by mission desc) as rank,* from Billboard";
             //string sqlStr2 = "select top 2 * from Billboard order by mission desc";
             SqlAccess sa = new SqlAccess();
@@ -22,22 +39,22 @@ namespace DBForward {
             string userName = (string)Session["UserName"];
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
-                    results.Add((string)drc[i]["name"]);
-                    results.Add((i + 1).ToString());
-                } else if(findUserRank){
+                    results = results + (string)drc[i]["name"] + ",";
+                    results = results + (i + 1) + ",";
+                } else if(findUserRank) {
                     break;
                 }
 
                 if(!findUserRank) {
                     string name = (string)drc[i]["name"];
                     if(name == userName) {
-                        results.Insert(0, (string)drc[i]["rank"]);
-                        results.Insert(0, userName);
+                        results.Insert(0, (string)drc[i]["rank"] + ",");
+                        results.Insert(0, results + userName + ",");
                         findUserRank = true;
                     }
                 }
             }
-            Response.Write(results);
+            Response.Write("<span>" + results + "</span>");
         }
     }
 }
