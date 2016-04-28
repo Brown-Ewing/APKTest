@@ -13,6 +13,11 @@
     
         入口页面：<br />
         这要是测试数据库操作。</div>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="Button1" runat="server" Text="Button" />
+        </p>
     </form>
 </body>
 </html>

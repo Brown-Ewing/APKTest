@@ -11,7 +11,7 @@ namespace DBForward {
         protected void Page_Load(object sender, EventArgs e) {
             string userName = Request.Params["name"];
             string userPassword = Request.Params["password"];
-            string sqlStr1 = "select * from Account where name='N" + userName + "' and password='" + userPassword + "'";
+            string sqlStr1 = "select * from Account where name=N'" + userName + "' and password='" + userPassword + "'";
 
             SqlAccess sa = new SqlAccess();
             DataTable dt = sa.ExecuteDataTable(sqlStr1);
@@ -20,8 +20,8 @@ namespace DBForward {
                 return;
             }
 
-            string sqlStr2 = "INSERT INTO Account (name, password) VALUES ('N" + userName + "', '" + userPassword + "')";
-            string sqlStr3 = "INSERT INTO Billboard (name) VALUES ('N" + userName + "')";
+            string sqlStr2 = "INSERT INTO Account (name, password) VALUES (N'" + userName + "', '" + userPassword + "')";
+            string sqlStr3 = "INSERT INTO Billboard (name) VALUES (N'" + userName + "')";
             int count2 = sa.ExecuteNonQuery(sqlStr2);
             int count3 = sa.ExecuteNonQuery(sqlStr3);
             if(count2 == 1 && count3 == 1) {
