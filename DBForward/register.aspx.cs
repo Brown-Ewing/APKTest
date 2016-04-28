@@ -21,10 +21,10 @@ namespace DBForward {
             }
 
             string sqlStr2 = "INSERT INTO Account (name, password) VALUES ('" + userName + "', '" + userPassword + "')";
-            //string sqlStr3 = "INSERT INTO Billboard (name) VALUES ('" + userName + "')";
+            string sqlStr3 = "INSERT INTO Billboard (name) VALUES ('" + userName + "')";
             int count2 = sa.ExecuteNonQuery(sqlStr2);
-            //int count3 = sa.ExecuteNonQuery(sqlStr3);
-            if(count2 == 1) {
+            int count3 = sa.ExecuteNonQuery(sqlStr3);
+            if(count2 == 1 && count3 == 1) {
                 Response.Write("<span>Success</span>");
             } else {
                 Response.Write("<span>Error</span>");
