@@ -52,7 +52,7 @@ namespace DBForward {
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
                         results = userName + "," + (string)drc[i]["rank"] + "," + results;
-                        test2 = results;
+                        test2 = results + "AAA";
                         findUserRank = true;
                     }
                 }
