@@ -20,6 +20,20 @@ namespace DBForward {
             //sa.ExecuteNonQuery(sqlStr3);
             //sa.ExecuteNonQuery(sqlStr4);
             //sa.sortByRowNumber(sqlStr6);
+            //string sqlStr7 = "TRUNCATE TABLE Account";
+            //string sqlStr8 = "TRUNCATE TABLE Billboard";
+            //string sqlStr9 = "UPDATE Billboard SET Id = 2 WHERE Id = 1";
+            //string sqlStr10 = "ALTER TABLE Account ALTER COLUMN name NVARCHAR (50) NOT NULL";
+            //string sqlStr11 = "ALTER TABLE Billboard ALTER COLUMN name NVARCHAR (50) NOT NULL";
+            string sqlStr12 = "DROP TABLE Account";
+            string sqlStr13 = "DROP TABLE Billboard";
+            string sqlStr14 = "CREATE TABLE [dbo].[Account] ( [Id] INT IDENTITY (1, 1) NOT NULL, [name] NVARCHAR (50) DEFAULT ('username') NOT NULL, [password] VARCHAR (50) NULL, [picture] IMAGE NULL, [gender] CHAR (10) NULL, [level] INT DEFAULT ((0)) NULL, [class] VARCHAR (50) NULL, CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([name] ASC));";
+            string sqlStr15 = "CREATE TABLE [dbo].[Billboard] ( [Id] INT IDENTITY (1, 1) NOT NULL, [name] NVARCHAR (50) DEFAULT ('username') NOT NULL, [mission] INT DEFAULT ((1)) NULL, [picture] IMAGE NULL, PRIMARY KEY CLUSTERED ([name] ASC), CONSTRAINT [FK_Billboard_ToTable] FOREIGN KEY ([name]) REFERENCES [dbo].[Account] ([name]));";
+            SqlAccess sa = new SqlAccess();
+            sa.ExecuteNonQuery(sqlStr12);
+            sa.ExecuteNonQuery(sqlStr13);
+            sa.ExecuteNonQuery(sqlStr14);
+            sa.ExecuteNonQuery(sqlStr15);
         }
     }
 }

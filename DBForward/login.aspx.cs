@@ -11,7 +11,7 @@ namespace DBForward {
         protected void Page_Load(object sender, EventArgs e) {
             string userName = Request.Params["name"];
             string userPassword = Request.Params["password"];
-            string sqlStr1 = "select * from Account where name='" + userName + "' and password='" + userPassword + "'";
+            string sqlStr1 = "select * from Account where name='N" + userName + "' and password='" + userPassword + "'";
 
             SqlAccess sa = new SqlAccess();
             DataTable dt = sa.ExecuteDataTable(sqlStr1);
