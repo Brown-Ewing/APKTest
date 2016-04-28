@@ -48,13 +48,14 @@ namespace DBForward {
                 if(!findUserRank) {
                     string name = (string)drc[i]["name"];
                     if(name == userName) {
-                        results.Insert(0, (string)drc[i]["rank"] + ",");
-                        results.Insert(0, results + userName + ",");
+                        //results.Insert(0, (string)drc[i]["rank"] + ",");
+                        //results.Insert(0, results + userName + ",");
+                        results = userName + "," + (string)drc[i]["rank"] + "," + results;
                         findUserRank = true;
                     }
                 }
             }
-            Response.Write("<span>" + results + len + "</span>");
+            Response.Write("<span>" + results + "</span>");
         }
     }
 }
