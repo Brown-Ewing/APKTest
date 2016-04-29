@@ -57,7 +57,7 @@ namespace DBForward {
                         //Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
-                        results = drc[i]["rank"].ToString() + userName + "," + drc[i]["mission"].ToString() + "," + results;
+                        results = drc[i]["rank"].ToString() + "," + userName + "," + drc[i]["mission"].ToString() + "," + results;
                         //test2 = results + "DDD";
                         findUserRank = true;
                     }
