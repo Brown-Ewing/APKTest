@@ -25,6 +25,7 @@ namespace DBForward {
         }
 
         void getBillboard(string userName) {
+            userName = "wen国昌";
             //返回包含自己在内的总共11个数据(自己+前10名)
             //List<string> results = new List<string>();
             String results = "";
