@@ -25,7 +25,6 @@ namespace DBForward {
         }
 
         void getBillboard(string userName) {
-            userName = "wen国昌";
             //返回包含自己在内的总共11个数据(自己+前10名)
             //List<string> results = new List<string>();
             String results = "";
@@ -49,9 +48,9 @@ namespace DBForward {
 
                 if(!findUserRank) {
                     string name = (string)drc[i]["name"];
-                    Response.Write(" AAA " + name + " BBB " + userName);
+                    //Response.Write(" AAA " + name + " BBB " + userName);
                     if(name.Equals(userName)) {
-                        Response.Write("CCC");
+                        //Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
                         results = userName + "," + drc[i]["rank"].ToString() + "," + results;
