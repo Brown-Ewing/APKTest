@@ -44,7 +44,7 @@ namespace DBForward {
             //string test1 = "", test2 = "";
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
-                    results = results + (i + 1) + "," + (string)drc[i]["name"] + "," + drc[i]["mission"].ToString();
+                    results = results + (i + 1) + "," + (string)drc[i]["name"] + "," + drc[i]["mission"].ToString() + ",";
                     //test1 = results;
                 } else if(findUserRank) {
                     break;
