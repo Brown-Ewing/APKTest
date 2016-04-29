@@ -44,7 +44,7 @@ namespace DBForward {
             //string test1 = "", test2 = "";
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
-                    results = results + (i + 1) + "," + (string)drc[i]["name"] + "," + (string)drc[i]["mission"];
+                    results = results + (i + 1) + "," + (string)drc[i]["name"] + "," + drc[i]["mission"].ToString();
                     //test1 = results;
                 } else if(findUserRank) {
                     break;
@@ -57,7 +57,7 @@ namespace DBForward {
                         //Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
-                        results = drc[i]["rank"].ToString() + userName + "," + (string)drc[i]["mission"] + "," + results;
+                        results = drc[i]["rank"].ToString() + userName + "," + drc[i]["mission"].ToString() + "," + results;
                         //test2 = results + "DDD";
                         findUserRank = true;
                     }
