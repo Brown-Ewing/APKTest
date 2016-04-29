@@ -53,7 +53,7 @@ namespace DBForward {
                         //Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
-                        results = userName + "," + (string)drc[i]["rank"] + "," + results;
+                        results = userName + "," + drc[i]["rank"].ToString() + "," + results;
                         //test2 = results + "DDD";
                         findUserRank = true;
                     }
