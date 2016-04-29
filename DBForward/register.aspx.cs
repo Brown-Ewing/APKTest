@@ -21,7 +21,7 @@ namespace DBForward {
             }
 
             string sqlStr2 = "INSERT INTO Account (name, password) VALUES (N'" + userName + "', '" + userPassword + "')";
-            string sqlStr3 = "INSERT INTO Billboard (name) VALUES (N'" + userName + "')";
+            string sqlStr3 = "INSERT INTO Billboard (name, mission) VALUES (N'" + userName + "', '1')";
             int count2 = sa.ExecuteNonQuery(sqlStr2);
             int count3 = sa.ExecuteNonQuery(sqlStr3);
             if(count2 == 1 && count3 == 1) {
