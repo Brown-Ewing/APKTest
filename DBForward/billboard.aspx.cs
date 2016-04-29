@@ -24,8 +24,12 @@ namespace DBForward {
             sa.ExecuteNonQuery(sqlStr);
         }
 
+        /// <summary>
+        /// 返回包含自己在内的总共11个数据(自己+前10名)，即：
+        /// 排名+用户名+关卡
+        /// </summary>
+        /// <param name="userName"></param>
         void getBillboard(string userName) {
-            //返回包含自己在内的总共11个数据(自己+前10名)
             //List<string> results = new List<string>();
             String results = "";
             string sqlStr1 = "select row_number() over(order by mission desc) as rank,* from Billboard";
@@ -40,7 +44,7 @@ namespace DBForward {
             //string test1 = "", test2 = "";
             for(int i = 0; i < len; i++) {
                 if(i < 10) {
-                    results = results + (string)drc[i]["name"] + "," + (i + 1) + ",";
+                    results = results + (i + 1) + "," + (string)drc[i]["name"] + "," + (string)drc[i]["mission"];
                     //test1 = results;
                 } else if(findUserRank) {
                     break;
@@ -53,7 +57,7 @@ namespace DBForward {
                         //Response.Write("CCC");
                         //results.Insert(0, (string)drc[i]["rank"] + ",");
                         //results.Insert(0, results + userName + ",");
-                        results = userName + "," + drc[i]["rank"].ToString() + "," + results;
+                        results = drc[i]["rank"].ToString() + userName + "," + (string)drc[i]["mission"] + "," + results;
                         //test2 = results + "DDD";
                         findUserRank = true;
                     }
